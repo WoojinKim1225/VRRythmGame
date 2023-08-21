@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7102081867786223864}
   - component: {fileID: -694810212842559684}
   - component: {fileID: 1420889454854830230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SubNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3016507653991672413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3016507653991672413}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -113,6 +113,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteSpeed: 0.8
   pressButtonThenDownEnable: 0
+  lineRenderer: {fileID: 1420889454854830230}
+  rayStartPos: {x: 0, y: 0, z: 0}
+  rayEndPos: {x: 0, y: 0, z: 0}
+  maxDistance: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   pressButton: 0
 --- !u!120 &1420889454854830230
 LineRenderer:
@@ -134,7 +141,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 32c3e6c2831cba54aa6363d03397adea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -160,7 +167,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.06
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:

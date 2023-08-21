@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 673838396024549286}
   - component: {fileID: 673838396024549287}
   - component: {fileID: 673838396024549288}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d265748992f3c224cb014bdfabe1af86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +79,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.06
+    widthMultiplier: 0.04
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -146,4 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteSpeed: 0.8
   pressButtonThenDownEnable: 0
+  lineRenderer: {fileID: 673838396024549287}
+  rayStartPos: {x: 0, y: 0, z: 0}
+  rayEndPos: {x: 0, y: 0, z: 0}
+  maxDistance: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   pressButton: 0
