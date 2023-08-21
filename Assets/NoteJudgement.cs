@@ -10,29 +10,38 @@ public class NoteJudgement : MonoBehaviour
     public LineRenderer lineRenderer;
     public Vector3 rayStartPos, rayEndPos;
     public float maxDistance;
-    public LayerMask layerMask;
-    public float destroyDistance = 0.001f;
-    public enum PressButton{ 
-        Grip, 
-        Trigger, 
-        MainButton
-    }
-    public PressButton pressButton;
+    public LayerMask hands;
+
+    public float distance;
+
+    public float destroyDistance = 0.01f;
 
     private void Start()
     {
         maxDistance = (rayEndPos - rayStartPos).magnitude;
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         transform.Translate(-Vector3.up * noteSpeed * Time.deltaTime);
         rayStartPos = transform.TransformPoint(lineRenderer.GetPosition(1));
         rayEndPos = transform.TransformPoint(lineRenderer.GetPosition(0));
-        maxDistance = (rayEndPos - rayStartPos).magnitude;
-        if (Physics.Raycast(rayStartPos, -Vector3.forward, out RaycastHit hit, maxDistance, layerMask))
+
+        if (rayEndPos.z < 0.4f)
         {
-            Debug.Log("asdfasdfd");
-            if (hit.distance < destroyDistance) Destroy(this.gameObject);
+            rayEndPos.z = 0.4f;
+            lineRenderer.SetPosition(0, transform.InverseTransformPoint(rayEndPos));
         }
+        maxDistance = (rayEndPos - rayStartPos).magnitude;
+        if (Physics.Raycast(rayStartPos, -Vector3.forward, out RaycastHit hit, maxDistance, hands))
+        {
+            if (hit.transform.tag == transform.tag)
+            {
+                Debug.Log("asdfasdfd");
+                distance = hit.distance;
+                if (hit.distance < destroyDistance) Destroy(this.gameObject);
+            }
+
+        }
+        if (rayStartPos.z < rayEndPos.z) Destroy(this.gameObject);
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -694810212842559684}
   - component: {fileID: 1420889454854830230}
   m_Layer: 8
-  m_Name: SubNote
+  m_Name: LeftHandSubNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,9 +117,10 @@ MonoBehaviour:
   rayStartPos: {x: 0, y: 0, z: 0}
   rayEndPos: {x: 0, y: 0, z: 0}
   maxDistance: 0
-  layerMask:
+  hands:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1024
+  destroyDistance: 0.01
   pressButton: 0
 --- !u!120 &1420889454854830230
 LineRenderer:

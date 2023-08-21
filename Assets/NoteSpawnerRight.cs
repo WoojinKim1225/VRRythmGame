@@ -7,6 +7,7 @@ public class NoteSpawnerRight : MonoBehaviour
     public MidiManager midiManager;
     public GameObject notePrefab, subNotePrefab;
     public GameObject noteParent, subNoteParent;
+    public string handTag, gripTag, triggerTag, primaryTag;
 
     private Vector3 noteOnPosition;
     private bool newPosition = false;
@@ -23,6 +24,8 @@ public class NoteSpawnerRight : MonoBehaviour
             GameObject note = Instantiate(notePrefab, transform.position, transform.rotation, noteParent.transform);
             NoteJudgement noteJudgement = note.GetComponent<NoteJudgement>();
             LineRenderer lineRenderer = note.GetComponent<LineRenderer>();
+            note.tag = handTag;
+
             lineRenderer.positionCount = 2;
             noteOnPosition = transform.position + (notes[i].pitch - 60) * 0.01f * Vector3.right;
             Vector3 noteOffPosition = noteOnPosition + (notes[i].endTime - notes[i].time) * 0.001f * noteJudgement.noteSpeed * Vector3.forward;
@@ -42,15 +45,18 @@ public class NoteSpawnerRight : MonoBehaviour
             NoteJudgement noteJudgement = subNote.GetComponent<NoteJudgement>();
             LineRenderer lineRenderer = subNote.GetComponent<LineRenderer>();
             if (newPosition) noteJudgement.pressButtonThenDownEnable = true;
-
+            
             newPosition = false;
+
 
             if (notes[j].pitch == 21) {
                 subNote.transform.Translate(-Vector3.right * 0.01f);
-            } else if (notes[j].pitch == 22) {
-            
+                subNote.tag = "Primary";
+            } else if (notes[j].pitch == 23) {
+                subNote.tag = "Trigger";
             } else if (notes[j].pitch == 24) {
                 subNote.transform.Translate(Vector3.right * 0.01f);
+                subNote.tag = "Grip";
             }
             lineRenderer.SetPosition(1, (notes[j].endTime - notes[j].time) * 0.001f * noteJudgement.noteSpeed * Vector3.up);
             yield return new WaitForSeconds((notes[j+1].time - notes[j].time)*0.001f);
