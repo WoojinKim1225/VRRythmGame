@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - LeftHand
-  - RightHand
-  - Primary
-  - Grip
-  - Trigger
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -17,11 +12,11 @@ TagManager:
   - Water
   - UI
   - 
-  - HandNote
-  - FingerNote
+  - Hand
   - 
-  - LeftHand
-  - RightHand
+  - 
+  - 
+  - 
   - 
   - 
   - 
